@@ -1,0 +1,13 @@
+#!/bin/bash
+# This file applies smor (or more precisely: fst-infl2) to the ligdict and writing the output to 01-smor/smor
+# It also measures the time needed for this process
+
+start=$(date +%s%N)
+./98-SMOR_binaries/windows/fst-infl2 -b -q ./98-SMOR_binaries/lib/smor.ca ../01-Testing-Dictionary/ligdict ./01-smor/smor
+end=$(date +%s%N)
+let duration=($end-$start)/1000000
+echo $duration ms
+
+# fst-infl2 options:
+# -b Print surface and analysis symbols
+# -q Suppress status messages
